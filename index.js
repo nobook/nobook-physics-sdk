@@ -3,7 +3,7 @@ function NBPhysics(callBack) {
     if(this.isDEBUG) {
         this.host="http://wuli.nobook.cc/";
     } else {
-        this.host="http://nobook.com.cn/";
+        this.host="http://wuli.nobook.com.cn/";
     }
     this._callBackFunc=callBack;
     // 动态加载js
@@ -91,7 +91,7 @@ NBPhysics.prototype.createPlayer = function (config) {
  * @param auth
  */
 NBPhysics.prototype.createSceneId = function (obj) {
-    var auth=obj.auth;
+    var auth=obj.auth();
     var callBack=obj.callBack;
     $.get(this.host+"openapi/creat?appid="+auth.appid+"&time="+auth.time+"&code="+auth.code, function (data) {
         if(data.success) {
@@ -106,11 +106,10 @@ NBPhysics.prototype.createSceneId = function (obj) {
  * @param obj
  */
 NBPhysics.prototype.openEditPage = function (obj) {
-    var auth=obj.auth;
+    var auth=obj.auth();
     var sceneid=obj.sceneid;
-    var url_="http://wuli.nobook.cc/openapi/edit?appid="+auth.appid+"&time="+auth.time+"&code="+auth.code+"&sceneid="+sceneid;
+    var url_=this.host+"openapi/edit?appid="+auth.appid+"&time="+auth.time+"&code="+auth.code+"&sceneid="+sceneid;
     window.open(url_);
 }
 
-global.NBPhysics = NBPhysics;
-module.exports = NBPhysics;
+//module.exports = NBPhysics;
