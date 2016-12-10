@@ -1,5 +1,5 @@
 function NBPhysics(callBack) {
-    this.isDEBUG = true;
+    this.isDEBUG = false;
     if(this.isDEBUG) {
         this.host="http://wuli.nobook.cc/";
     } else {
