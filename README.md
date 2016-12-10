@@ -13,17 +13,6 @@ var nbPhysics = new NBPhysics(function () {
 	console.log("初始化完成");
 });
 ```
-##### 创建auth权限函数
-```javascript
-var auth = function () {
-	// 模拟后端参数生成(appkey不可暴露)
-	var appid="123456";
-	var time=new Date().getTime();
-	var appkey="vwerOkEmJu6tgbToV";
-	var code=md5(appid+time+appkey);
-	return {appid:appid, time:time, code:code};
-}
-```
 ##### 创建实验并获取实验id
 ```javascript
 nbPhysics.createSceneId({
