@@ -3,7 +3,7 @@ function NBPhysics(callBack) {
     if(this.isDEBUG) {
         this.host="http://wuli.nobook.cc/";
     } else {
-        this.host="http://console.nobook.com.cn/";
+        this.host="http://nobook.com.cn/";
     }
     this._callBackFunc=callBack;
     // 动态加载js
