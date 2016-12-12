@@ -112,4 +112,4 @@ NBPhysics.prototype.openEditPage = function (obj) {
     window.open(url_);
 }
 
-//module.exports = NBPhysics;
+module.exports = NBPhysics;
