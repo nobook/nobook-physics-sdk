@@ -55,7 +55,7 @@ NBPhysics.prototype.__loadComplete = function () {
 }
 
 NBPhysics.prototype.__init = function () {
-    $.get("/static/js/electricity.js", function (data) {
+    $.get(this.host+"/static/js/electricity.js", function (data) {
         this._labjs=data;
         if(this._callBackFunc) {
             this._callBackFunc();
