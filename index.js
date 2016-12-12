@@ -40,7 +40,7 @@ NBPhysics.prototype.__loadNextJS = function () {
         script.onload= function(){
             this.__loadComplete();
         }.bind(this);
-        script.src= path_;
+        script.src= this.host+path_;
         this.head.appendChild(script);
     }
 }
@@ -55,7 +55,7 @@ NBPhysics.prototype.__loadComplete = function () {
 }
 
 NBPhysics.prototype.__init = function () {
-    $.get(this.host+"/static/js/electricity.js", function (data) {
+    $.get(this.host+"static/js/electricity.js", function (data) {
         this._labjs=data;
         if(this._callBackFunc) {
             this._callBackFunc();
@@ -111,5 +111,5 @@ NBPhysics.prototype.openEditPage = function (obj) {
     var url_=this.host+"openapi/edit?appid="+auth.appid+"&time="+auth.time+"&code="+auth.code+"&sceneid="+sceneid;
     window.open(url_);
 }
-
+global.NBPhysics = NBPhysics;
 module.exports = NBPhysics;
