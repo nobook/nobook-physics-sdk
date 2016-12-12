@@ -2,8 +2,10 @@ function NBPhysics(callBack) {
     this.isDEBUG = false;
     if(this.isDEBUG) {
         this.host="http://wuli.nobook.cc/";
+        this.cdn_static = "http://wuli.nobook.cc/";
     } else {
         this.host="http://wuli.nobook.com.cn/";
+        this.cdn_static = "http://wulicdn.nobook.com.cn/";
     }
     this._callBackFunc=callBack;
     // 动态加载js
@@ -40,7 +42,7 @@ NBPhysics.prototype.__loadNextJS = function () {
         script.onload= function(){
             this.__loadComplete();
         }.bind(this);
-        script.src= this.host+path_;
+        script.src= this.cdn_static+path_;
         this.head.appendChild(script);
     }
 }
@@ -55,7 +57,7 @@ NBPhysics.prototype.__loadComplete = function () {
 }
 
 NBPhysics.prototype.__init = function () {
-    $.get(this.host+"static/js/electricity.js", function (data) {
+    $.get(this.cdn_static+"static/js/electricity.js", function (data) {
         this._labjs=data;
         if(this._callBackFunc) {
             this._callBackFunc();
@@ -67,7 +69,7 @@ NBPhysics.prototype.__getJSID = function () {
     if(!this._labjs) return false;
     var id=new Date().getTime();
     var jsstr = this._labjs.replace("dd0ae49a87320653", id);
-    eval(jsstr);
+    window.eval(jsstr);
     return "ID_"+id;
 }
 
